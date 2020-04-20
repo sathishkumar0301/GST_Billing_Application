@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Edit</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+</head>
+<body>
+   <div>
+     <h1>Product</h1>
+   </div>
+   
+   <form th:action="@{/product/update}" method="post" >
+     <table>
+       <tr>
+         <td><h5>Product Code</h5></td>
+         <td><input type="number" name="productCode" th:value="${product.productCode}"></td>
+       </tr>
+       <tr>
+         <td><h5>Product Name</h5></td>
+         <td><input type="text" name="productName" th:value="${product.productName}"></td>
+       </tr>
+       <tr>
+         <td><h5>Product Price</h5></td>
+         <td><input type="number"  name="productPrice" th:value="${product.productPrice}"></td>
+       </tr>
+       <tr>
+         <td><h5>Product GST</h5></td>
+         <td><input type="number"  name="productGst" th:value="${product.productGst}"></td>
+       </tr>
+       <tr>
+         <td><a th:href="@{/product/delete/{id}(id=${product.productCode})}"><button>Delete</button></a></td>
+         <td><input  type="submit" value="Save"></td>
+       </tr>
+     </table>
+   </form>
+</body>
+</html>

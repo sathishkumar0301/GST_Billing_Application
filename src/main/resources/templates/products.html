@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Products</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+</head>
+<body>
+   <div>
+     <h1>Products</h1>
+   </div>
+   
+   <table>
+     <tr>
+       <th>Id</th>
+       <th>Name</th>
+       <th>Price</th>
+       <th>GST</th>
+       <th></th>
+     </tr>
+     <tr th:each="product:${products}">
+       <td id="productId" th:text="${product.productCode}"></td>
+       <td th:text="${product.productName}"></td>
+       <td th:text="${product.productPrice}"></td>
+       <td th:text="${product.productGst}"></td>
+       <td><a th:href="@{/product/{id}(id=${product.productCode})}"><button>Edit</button></a></td>
+     </tr>
+   </table>
+   <br><br><br>
+   <form th:action="@{/product/add}" method="post" >
+     <table>
+       <tr>
+         <td><h5>Product Name</h5></td>
+         <td><input id="name" type="text" name="productName"></td>
+       </tr>
+       <tr>
+         <td><h5>Product Price</h5></td>
+         <td><input type="number" id="price" name="productPrice"></td>
+       </tr>
+       <tr>
+         <td><h5>Product GST</h5></td>
+         <td><input type="number" id="gst" name="productGst"></td>
+       </tr>
+       <tr>
+         <td></td>
+         <td><input id="submit" type="submit" value="Add"></td>
+       </tr>
+     </table>
+   </form>
+</body>
+</html>

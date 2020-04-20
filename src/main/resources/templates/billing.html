@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Edit</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+</head>
+<body>
+   <div>
+     <h1>Billing</h1>
+   </div>
+   <table>
+       <tr><td th:text="${error}"></td></tr>
+   <tr>
+       <td>
+  <form th:action="@{/product/search/}" method="post">
+       
+         Product Id/Name: <input type="text" name="productName" th:value="${product.productName}">
+         <input type="submit" value="Find">
+        
+         </form>
+         
+         </td>
+         <td>
+         <form th:action="@{/product/addProduct}" method="post" >
+          
+         Quantity: <input type="number" name="quantity" >
+    
+         <input  type="submit" value="Add">
+       
+       </form>
+       </td>
+       </tr>
+
+         <table>
+     <tr th:each="product:${rproducts}">
+       <td th:text="${product.productName}"></td>
+       <td th:text="${product.productPrice}"></td>
+       <td th:text="${product.productGst}"></td>
+       <td><a th:href="@{/product/choose/{id}(id=${product.productCode})}"><button>Choose</button></a></td>
+
+     </tr>
+
+   <table>
+     <tr>
+       <th>Id</th>
+       <th>Name</th>
+       <th>Price</th>
+       <th>GST</th>
+       <th>Quantity</th>
+       <th>Amount</th>
+       <th></th>
+     </tr>
+     <tr th:each="product:${sproducts}">
+       <td id="productId" th:text="${product.product.productCode}"></td>
+       <td th:text="${product.product.productName}"></td>
+       <td th:text="${product.product.productPrice}"></td>
+       <td th:text="${product.product.productGst}">%</td>
+       <td th:text="${product.quantity}"></td>
+       <td th:text="${product.amount}"></td>
+
+     </tr>
+     <tr>
+         <td/>
+         <td/>
+         <td/>
+         <td/>
+         <td></td> 
+         <td>________</td>
+    </tr>
+     <tr>
+         <td/>
+         <td/>
+         <td/>
+         <td/>
+         <td></td> 
+         <td th:text="${total}"></td>
+    </tr>
+    <tr>
+         <td/>
+         <td/>
+         <td/>
+         <td/>
+         <td></td> 
+         <td>________</td>
+    </tr>
+   </table>
+
+
+     <table>
+</body>
+</html>
